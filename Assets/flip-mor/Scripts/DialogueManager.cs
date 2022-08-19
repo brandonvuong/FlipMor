@@ -19,7 +19,9 @@ public class DialogueManager : MonoBehaviour
 
     private Story currentStory;
 
-    public bool isDialoguePlaying { get; private set; }
+    public bool dialogueIsPlaying { get; private set; }
+
+    //private bool dialogueIsPlaying;
 
     private static DialogueManager instance;
 
@@ -37,10 +39,18 @@ public class DialogueManager : MonoBehaviour
         return instance;
     }
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        isDialoguePlaying = false;
+        dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
+
+        choicesText = new TextMeshProUGUI[choices.Length];
+        int index = 0;
+        foreach (GameObject choice in choices)
+        {
+            choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
+            index++;
+        }
 
         //if (currentStory.canContinue)
         //{
@@ -53,28 +63,42 @@ public class DialogueManager : MonoBehaviour
     public void EnterDialogue(TextAsset inkJSON)
     {
         currentStory = new Story(inkJSON.text);
-        isDialoguePlaying = true;
+        dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
-
-        if (currentStory.canContinue)
-        {
-            dialogueText.text = currentStory.Continue();
-        }
-        else
-            ExitDialogueMode();
-
+        //if (currentStory.canContinue)
+        //{
+        //    dialogueText.text = currentStory.Continue();
+        //}
+        //else
+        //{
+        //    ExitDialogueMode();
+        //}
+        ContinueStory();
     }
 
     private void ContinueStory()
     {
+        //if (currentStory.canContinue)
+        //{
+        //    Debug.Log("check check here");
+        //    dialogueText.text = currentStory.Continue();
+        //    //DisplayChoices();
+        //    string curr = dialogueText.text;
+        //}
+        //if(!currentStory.canContinue)
+        //{
+        //    Debug.Log("this calling ?");
+        //    StartCoroutine(ExitDialogueMode());
+        //}
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            string temp = currentStory.Continue();
+            dialogueText.text = temp;
             DisplayChoices();
         }
         else
         {
-            StartCoroutine(ExitDialogueMode());
+           StartCoroutine(ExitDialogueMode());
         }
     }
 
@@ -121,15 +145,16 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        isDialoguePlaying = false;
+        dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
     }
 
-    // Update is called once per frame
+    //// Update is called once per frame
     private void Update()
     {
-        if (!isDialoguePlaying)
+
+        if (dialogueIsPlaying == false)
         {
             return;
         }
@@ -137,12 +162,14 @@ public class DialogueManager : MonoBehaviour
         {
             ContinueStory();
         }
+
     }
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
         // NOTE: The below two lines were added to fix a bug after the Youtube video was made
         // this is specific to my InputManager script
+
         ContinueStory();
     }
 }

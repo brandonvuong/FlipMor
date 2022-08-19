@@ -1,4 +1,12 @@
-This is a dialogue test
-I really hope that this works
-If it did not work, big sad 
-RIP
+-> main
+
+=== main ===
+Do you want to fix-and-flip houses?
+    + [Yes]
+        -> chosen("Yes")
+    + [No]
+        -> chosen("No")
+
+=== chosen(pokemon) ===
+You chose {pokemon}!
+-> END
