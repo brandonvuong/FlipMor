@@ -39,15 +39,15 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isDialoguePlaying = true;
-        dialoguePanel.SetActive(true);
+        isDialoguePlaying = false;
+        dialoguePanel.SetActive(false);
 
-        if (currentStory.canContinue)
-        {
-            dialogueText.text = currentStory.Continue();
-        }
-        else
-            ExitDialogueMode();
+        //if (currentStory.canContinue)
+        //{
+        //    dialogueText.text = currentStory.Continue();
+        //}
+        //else
+        //    ExitDialogueMode();
     }
 
     public void EnterDialogue(TextAsset inkJSON)
@@ -133,7 +133,8 @@ public class DialogueManager : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.E)){
+        if (Input.GetKeyDown(KeyCode.E))
+        {
             ContinueStory();
         }
     }
@@ -141,7 +142,7 @@ public class DialogueManager : MonoBehaviour
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
         // NOTE: The below two lines were added to fix a bug after the Youtube video was made
-         // this is specific to my InputManager script
+        // this is specific to my InputManager script
         ContinueStory();
     }
 }
