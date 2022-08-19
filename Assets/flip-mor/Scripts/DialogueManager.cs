@@ -5,6 +5,7 @@ using TMPro;
 using Ink.Runtime;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.EventSystems;
+using Ink.UnityIntegration;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
 
+    [Header("Globals Ink File")]
+    [SerializeField] private InkFile globalsInkFile;
 
     private Story currentStory;
 
@@ -25,6 +28,8 @@ public class DialogueManager : MonoBehaviour
 
     private static DialogueManager instance;
 
+    private DialogueVariables dialogeVariables;
+
     private void Awake()
     {
         if (instance != null)
@@ -32,6 +37,7 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("wtf why are there more than 1 dialogue managers in this singleton class. that shit dont make sense");
         }
         instance = this;
+        dialogeVariables = new DialogueVariables(globalsInkFile.filePath);
     }
 
     public static DialogueManager GetInstance()
@@ -65,6 +71,8 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
+
+        dialogeVariables.StartListening(currentStory);
         //if (currentStory.canContinue)
         //{
         //    dialogueText.text = currentStory.Continue();
@@ -98,7 +106,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-           StartCoroutine(ExitDialogueMode());
+            StartCoroutine(ExitDialogueMode());
         }
     }
 
@@ -145,9 +153,12 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
+        dialogeVariables.StopListening(currentStory);
+
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+
     }
 
     //// Update is called once per frame
@@ -171,5 +182,16 @@ public class DialogueManager : MonoBehaviour
         // this is specific to my InputManager script
 
         ContinueStory();
+    }
+
+    public Ink.Runtime.Object GetVariableState(string variableName)
+    {
+        Ink.Runtime.Object variableValue = null;
+        dialogeVariables.variables.TryGetValue(variableName, out variableValue);
+        if (variableValue == null)
+        {
+            Debug.LogWarning("This variable not real" + variableName);
+        }
+        return variableValue; 
     }
 }
