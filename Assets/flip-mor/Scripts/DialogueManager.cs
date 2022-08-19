@@ -169,7 +169,7 @@ public class DialogueManager : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (currentStory.currentChoices.Count == 0 && Input.GetKeyDown(KeyCode.E))
         {
             ContinueStory();
         }
