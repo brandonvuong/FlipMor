@@ -5,7 +5,7 @@ INCLUDE globals.ink
 -> main
 
 === main ===
-Hi, my name is Senior Product Manager, and I'll be your tour guide around FlipMor. Stop galking, and let’s start this sh*t
+Hi, my name is Mark, SENIOR Product Manager, and I'll be your tour guide around FlipMor. Stop galking, and let’s start this sh*t
 -> FlipTour
 
 === FlipTour === //mark
@@ -20,9 +20,9 @@ Are you ready to embark on the journey of a lifetime?
 ===Yes===//mark
 F*ck yeah, so on a high level a Fix-and Flip is simply when you buy a property, improve it, then sell it really quickly.
 + Got, it
-   -> EasyShit
+   -> EasySh1t
 
-===EasyShit===//mark
+===EasySh1t===//mark
 That’s easy sh*t, right? but I’m sure you’re wondering, when does the money come in? Ok, so the reason why fix-and-flips are quick, is because of hard-money lending which allows for loan terms to be as short as 6 to 12 months. While traditional home loans take 15 to 30 years to pay off!
 + Ok, so how much money do I need??
  -> DunmorisClutch
@@ -62,7 +62,7 @@ Unexpected Costs: 1 – 2% of the sales price
 
 ===ChooseLoan=== //mark
 I'm gonna give you 3 loan options to make the 70% rule easier and to get a feel of typical loan amounts.
-+Let's fucking see it
++Let's f*cking see it
 ->LoanAmounts
 +Bet
 ->LoanAmounts
