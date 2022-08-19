@@ -16,7 +16,11 @@ This property costs $55,000 Would you like to purchase?
         -> declined
 
 === purchased ===
-~ moneyCount = moneyCount - 55000
+// { moneyCount < 55000:
+//     Sorry, you don't have enough Ruimies.
+//     -> declined
+// }
+~ price = "55000"
 Thanks for your purchase. Good luck!
 -> END
 

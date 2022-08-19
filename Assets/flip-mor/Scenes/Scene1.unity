@@ -1361,6 +1361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Listing (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 945747444131777770, guid: 57fe86ee3aebc4283a97ef2756dabeb2, type: 3}
+      propertyPath: inkJSON
+      value: 
+      objectReference: {fileID: 4900000, guid: d3b07c1bcf6954dbf82a86d7e33c1bdb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57fe86ee3aebc4283a97ef2756dabeb2, type: 3}
 --- !u!1 &1183067560
