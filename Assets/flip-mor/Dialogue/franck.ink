@@ -6,10 +6,10 @@ INCLUDE globals.ink
 
 === main ===
 How much do you want to borrow?
+    + [100000]
+        -> chosen("100000")
     + [500000]
         -> chosen("500000")
-    + [1000000]
-        -> chosen("1000000")
 
 === chosen(money) ===
 ~ moneyCount = money

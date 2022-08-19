@@ -13,6 +13,7 @@ public class MoneyManager : MonoBehaviour
 
     public string money;
     public string price;
+    public string salePrice;
 
     private Renderer moneyRenderer;
     // Start is called before the first frame update
@@ -27,7 +28,8 @@ public class MoneyManager : MonoBehaviour
     {
         money = ((Ink.Runtime.StringValue)DialogueManager.GetInstance().GetVariableState("moneyCount")).value;
         price = ((Ink.Runtime.StringValue)DialogueManager.GetInstance().GetVariableState("price")).value;
-        moneyText.text = (Convert.ToDouble(money) - Convert.ToDouble(price)).ToString();
+        salePrice = ((Ink.Runtime.StringValue)DialogueManager.GetInstance().GetVariableState("salePrice")).value;
+        moneyText.text = (Convert.ToDouble(money) - Convert.ToDouble(price) + Convert.ToDouble(salePrice)).ToString();
         // money = Convert.ToDouble(moneyText.text);
     }
     //public void addMoney(int moneyToAdd)
