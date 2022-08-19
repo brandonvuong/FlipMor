@@ -3,9 +3,9 @@ INCLUDE globals.ink
 { purchased: -> purchased | -> main}
 
 === main ===
-Welcome to 24385 CRESTLAWN ST, WOODLAND HILLS!
-This single family residence (SFR) has 4 bedrooms and 2 bathrooms.
-It has 1,936 sq ft and was built in 1962.
+Welcome to 5535 CANOGA AVE APT 308, WOODLAND HILLS!
+This condominium has 4 bedrooms and 2 bathrooms.
+It has 640 sq ft and was built in 1987.
 -> purchase_decision
 
 === purchase_decision ===
@@ -50,6 +50,6 @@ Unfortunately, your property only sold for $70,000, which leaves you with a net 
 === winner ===
 ~ salePrice = "100000"
 Your property sold for $100,000!
-Keep on trakc with your investment choices, and apply your skills
+Keep on track with your investment choices, and apply your skills
 at dunmor.com and experience the world for Fix and Flip!
 ->END

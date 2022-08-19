@@ -3,9 +3,9 @@
 { purchased: -> purchased | -> main}
 
 === main ===
-Welcome to 24385 CRESTLAWN ST, WOODLAND HILLS!
-This single family residence (SFR) has 4 bedrooms and 2 bathrooms.
-It has 1,936 sq ft and was built in 1962.
+Welcome to 23313 BESSEMER ST, WOODLAND HILLS!
+This single family residence (SFR) has 3 bedrooms and 2 bathrooms.
+It has 1,947 sq ft and was built in 1963.
 -> purchase_decision
 
 === purchase_decision ===
@@ -51,6 +51,6 @@ Unfortunately, your property only sold for $130,000, which leaves you with a net
 === winner ===
 ~ salePrice = "160000"
 Your property sold for $160,000!
-Keep on trakc with your investment choices, and apply your skills
+Keep on track with your investment choices, and apply your skills
 at dunmor.com and experience the world for Fix and Flip!
 ->END
